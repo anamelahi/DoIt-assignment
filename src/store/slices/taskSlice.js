@@ -8,8 +8,18 @@ const taskSlice = createSlice({
         selectedTask: null,
     },
     reducers:{
-        addTask:(state,action)=>{
-            state.activeTasks.push({id: Date.now(),text:action.payload,completed:false})
+        // addTask:(state,action)=>{
+        //     state.activeTasks.push({id: Date.now(),text:action.payload,completed:false})
+        // },
+        addTask: (state, action) => {
+            const { text, isOutdoor } = action.payload;
+            state.activeTasks.push({
+                id: Date.now(),
+                text,
+                completed: false,
+                isOutdoor,  // New property
+                weather: null, // Placeholder for weather data
+            });
         },
         toggleCompletion:(state,action)=>{
             const taskId = action.payload;
@@ -43,9 +53,16 @@ const taskSlice = createSlice({
         },
         closeTaskDetails:(state)=>{
             state.selectedTask = null;
-        }
+        },
+        setWeather: (state, action) => {
+            const { id, weather } = action.payload;
+            const task = state.activeTasks.find(task => task.id === id);
+            if (task) {
+                task.weather = weather;
+            }
+        },
     },
 
 });
-export const {addTask,toggleCompletion, selectedTask, closeTaskDetails, deleteTask} = taskSlice.actions;
+export const {addTask,toggleCompletion, selectedTask, closeTaskDetails, deleteTask,setWeather} = taskSlice.actions;
 export default taskSlice.reducer;

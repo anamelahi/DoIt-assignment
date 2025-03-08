@@ -215,10 +215,11 @@ nav div{
     border: none;
     background-color: transparent;
 }
-/* input{
+.task-details-div input{
     border: none;
     background: transparent;
     font-family: Outfit;
     padding: 20px;
     height: 20vh;
-} */
+}
+

@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    
+}
+html, body{
+    font-family: Outfit;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+/* MENU LIST */
+.menuList{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+}
+.menuList p{
+    font-family: Outfit;
+}
+
+.icon-large {
+    font-size: 23px; /* Change size as needed */
+  }
+
+  /* NABAR */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 20px;
+    height: 8vh;
+    /* background-color: bisque; */
+}
+nav div{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+  
+/* SIDE BAR */
+.sideBar-div{
+    background-color: #EEF6EF;
+    width: fit-content;
+    /* position: fixed; */
+    padding: 10px 20px;
+    margin-top:15px ;
+    margin-left: 15px;
+    height: 100%;
+    font-size: 15px;
+
+}
+.profile-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+}
+.profile-section img{
+
+    /* position: absolute;
+    top: 55px; */
+
+}
+
+.section1{
+    background-color: #fff;
+    /* margin: 10px 10px; */
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.section2{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    text-align: left;
+    justify-content: left;
+    gap: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 10px;
+
+}
+.section3{
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px;
+    height: fit-content;
+    border-radius: 10px;
+
+}
+
+
+/* HOME */
+.home{
+    display: flex   ;
+}
+
+.add-task-container{
+    padding: 10px 20px;
+    margin-right: 10px;
+    height: 20vh;
+    /* width: 90; */
+    background:greenyellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: linear-gradient(358.24deg, rgba(53, 121, 55, 0.1) 1.27%, rgba(208, 255, 210, 0.1) 98.29%);
+
+}
+.add-task-container p{
+    color: #1B281BB8;
+}
+.task-options{
+    display: flex;
+    justify-content: space-between;
+}
+.add-task-btn{
+    background: #35793729;
+    border: none;
+    color: #357937;
+    padding: 10px 15px;
+    font-family: Outfit;
+    font-weight: 500;
+    border-radius: 5px
+}
+.task-input{
+    border: none;
+    background: transparent;
+    font-family: Outfit;
+    padding: 20px;
+}
+.task-icons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* MAIN */
+.main{
+    width: 100vw;
+    height: 100vh;
+    /* margin: 10px; */
+    padding: 10px;
+}
+.very-main{
+    display: flex;
+}
+
+/* TASK LIST */
+.task-list-div{
+    padding: 10px 5px;
+    margin: 5px;
+    /* background-color: #357937; */
+}
+.box{
+    /* height: 15px;
+    width: 15px;
+    border: 1px black solid; */
+    /* overflow: hidden; */
+}
+.check{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid rgba(27, 89, 27, 0.425);
+    align-items: center;
+}
+.task-done {
+    text-decoration: line-through;
+    color: gray;
+  }
+  .todo,
+.completed {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+  
+.list-left{
+    /* background: #faeeee; */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+/* akshfkj */
+
+/* TASK DETAILS */
+.task-details-div{
+    width: 25vw;
+    margin-right: 20px;
+}
+.action-btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.action-btn button{
+    border: none;
+    background-color: transparent;
+}
+/* input{
+    border: none;
+    background: transparent;
+    font-family: Outfit;
+    padding: 20px;
+    height: 20vh;
+} */

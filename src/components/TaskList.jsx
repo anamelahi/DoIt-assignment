@@ -1,56 +1,22 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "../App.css";
-import env from "dotenv"
+import { useEffect } from "react";
+import { fetchWeather } from "../store/slices/weatherSlice";
 import { CiStar } from "react-icons/ci";
 import { FaCheckSquare } from "react-icons/fa";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
-import { toggleCompletion, selectedTask, setWeather } from "../store/slices/taskSlice";
-
-const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY; 
+import { toggleCompletion, selectedTask } from "../store/slices/taskSlice";
 
 const TaskList = ({ tasks }) => {
   const dispatch = useDispatch();
-  const [weatherData, setWeatherData] = useState({}); // Store weather data for tasks
-  const [temperature, setTemperature] = useState(null);
+  const { weatherData, loading, error } = useSelector((state) => state.weather);
 
   useEffect(() => {
     tasks.forEach((task) => {
-      if (task.isOutdoor && !weatherData[task.id]) {
-        fetchWeather(task.location, task.id);
+      if (task.isOutdoor && !weatherData[task.location]) {
+        dispatch(fetchWeather(task.location)); // Dispatch thunk
       }
     });
-  }, [tasks]);
-
-
-  const fetchWeather = async () => {
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=${API_KEY}&units=metric`
-      );
-      const data = await response.json();
-  
-      console.log("Weather API Response:", data); // ✅ Debugging
-  
-      if (data.main && data.main.temp !== undefined) {
-        // console.log("Temperature:", data.main.temp);
-        // setTemperature(data.main.temp); // Ensure setState is working
-        setWeatherData((prevData) => ({
-          ...prevData,
-          [taskId]: {
-            temp: data.main.temp,
-            condition: data.weather[0].description, // Store weather condition
-          },
-        }));
-      } else {
-        console.error("Error: 'temp' is missing in API response.");
-      }
-    } catch (error) {
-      console.error("Error fetching weather data:", error);
-    }
-  };
-  
+  }, [tasks, dispatch, weatherData]);
 
   const handleCheckBox = (taskId) => {
     dispatch(toggleCompletion(taskId));
@@ -78,12 +44,13 @@ const TaskList = ({ tasks }) => {
           </div>
 
           <div>
-            {task.isOutdoor && weatherData[task.id] ? (
-              <p>🌡 {weatherData[task.id].temp}°C | {weatherData[task.id].condition}</p>
+            {task.isOutdoor && weatherData[task.location] ? (
+              <p>🌡 {weatherData[task.location].temp}°C | {weatherData[task.location].condition}</p>
+            ) : loading ? (
+              <p>Fetching Weather...</p>
             ) : (
-              <p></p>
+              <p>{error ? `Error: ${error}` : ""}</p>
             )}
-
             <CiStar className="icon-large" />
           </div>
         </div>

@@ -8,14 +8,8 @@ import { MdAssignmentInd } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import profile from "/profile.png";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
+import TaskChart from "./TaskChart";
 
-
-
-const settings = {
-  value: 75, // Adjust this value as needed
-  startAngle: -90,
-  endAngle: 90,
-};
 
 const Sidebar = () => {
 
@@ -39,29 +33,7 @@ const Sidebar = () => {
       </div>
 
       <div className="section3">
-        <div className="head">
-          <p>Today Tasks</p>
-          <p>11</p>
-        </div>
-
-        <div style={{ width: 200, height: 200 }}>
-        <Gauge
-          {...settings}
-          cornerRadius="50%"
-          sx={(theme) => ({
-            [`& .${gaugeClasses.valueText}`]: {
-              fontSize: 40,
-            },
-            [`& .${gaugeClasses.valueArc}`]: {
-              fill: "#52b202",
-            },
-            [`& .${gaugeClasses.referenceArc}`]: {
-              fill: theme.palette.text.disabled,
-            },
-          })}
-        />
-        </div>
-        
+        <TaskChart />
       </div>
     </div>
   );

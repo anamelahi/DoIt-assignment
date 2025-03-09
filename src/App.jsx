@@ -1,15 +1,27 @@
-import { useState } from "react";
 import "./App.css";
-import { Provider } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import Home from "./pages/Home";
-import store from "./store/store.js";
+import { login, logout } from "./store/slices/authSlice.js";
+
 function App() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
   return (
     <>
-      <Provider store={store}>
+      {/* <Provider store={store}>
         <Home />
-        
-      </Provider>
+      </Provider> */}
+      {isAuthenticated ? (
+        <>
+          <Home />
+        </>
+      ) : (
+        <div className="login-div">
+          <p>Please log in to see your To-Do list.</p>
+          <button onClick={() => dispatch(login())}>Login</button>
+        </div>
+      )}
     </>
   );
 }

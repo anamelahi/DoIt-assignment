@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const taskSlice = createSlice({
     name:"tasks",
     initialState:{
@@ -17,8 +18,8 @@ const taskSlice = createSlice({
                 id: Date.now(),
                 text,
                 completed: false,
-                isOutdoor,  // New property
-                weather: null, // Placeholder for weather data
+                isOutdoor,  
+                weather: null, 
             });
         },
         toggleCompletion:(state,action)=>{
@@ -40,7 +41,6 @@ const taskSlice = createSlice({
         deleteTask: (state, action) => {
             const taskId = action.payload;
             
-            // Remove from activeTasks if it exists there
             state.activeTasks = state.activeTasks.filter(task => task.id !== taskId);
             state.completedTasks = state.completedTasks.filter(task => task.id !== taskId);
             if (state.selectedTask?.id === taskId) {

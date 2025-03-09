@@ -10,13 +10,14 @@ import TaskDetails from "../components/TaskDetails";
 const Home = () => {
   const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   const activeTasks = useSelector((state) => state.tasks.activeTasks);
   const completedTasks = useSelector((state) => state.tasks.completedTasks);
   const selectedTask = useSelector((state) => state.tasks.selectedTask);
 
   return (
-    <div>
+    <div className={darkMode ? "dark-theme" : "light-theme"}>
       <Navbar />
       <div className="home">
         <Sidebar />
@@ -25,18 +26,13 @@ const Home = () => {
             {/* todo */}
             <div className="todo">
               <AddTask />
-              {/* <TaskList tasks={activeTasks} onToggleTask={(id) => dispatch(toggleCompletion(id))}/> */}
               <TaskList tasks={activeTasks} />
             </div>
             {/* completed */}
             <div className="completed">
               <p>Completed</p>
               <TaskList tasks={completedTasks} onToggleTask={(id) => dispatch(toggleCompletion(id))} />
-              {/* {completedTasks.map((task) => (
-                <div key={task.id} className="completed-task">
-                  {task.text}
-                </div>
-              ))} */}
+             
             </div>
           </div>
           {selectedTask && <TaskDetails task={selectedTask} />}

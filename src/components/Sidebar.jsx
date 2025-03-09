@@ -9,33 +9,47 @@ import { FaPlus } from "react-icons/fa6";
 import profile from "/profile.png";
 import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
 import TaskChart from "./TaskChart";
-
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   return (
-    <div className="sideBar-div">
+    <>
+    <div className="sideBar-div" >
       <div className="profile-section">
         <img src={profile} alt="" />
         <p>Hello User</p>
       </div>
 
       <div className="section1">
-        <MenuList icons={<HiOutlineClipboardList className="icon-large" />} text="All Tasks" />
+        <MenuList
+          icons={<HiOutlineClipboardList className="icon-large" />}
+          text="All Tasks"
+        />
         <MenuList icons={<CiCalendar className="icon-large" />} text="Today" />
-        <MenuList icons={<FaRegStar className="icon-large"/>} text="Important" />
-        <MenuList icons={<CiMap className="icon-large"/>} text="Planned" />
-        <MenuList icons={<MdAssignmentInd className="icon-large"/>} text="Assigned to me" />
+        <MenuList
+          icons={<FaRegStar className="icon-large" />}
+          text="Important"
+        />
+        <MenuList icons={<CiMap className="icon-large" />} text="Planned" />
+        <MenuList
+          icons={<MdAssignmentInd className="icon-large" />}
+          text="Assigned to me"
+        />
       </div>
 
       <div className="section2">
-          <FaPlus />Add Task
+        <FaPlus />
+        Add Task
       </div>
 
       <div className="section3">
         <TaskChart />
       </div>
     </div>
+    </>
+
   );
 };
 

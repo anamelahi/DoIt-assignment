@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import Sidebar from "../components/Sidebar";
@@ -11,17 +11,20 @@ const Home = () => {
   const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const activeTasks = useSelector((state) => state.tasks.activeTasks);
   const completedTasks = useSelector((state) => state.tasks.completedTasks);
   const selectedTask = useSelector((state) => state.tasks.selectedTask);
-
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
   return (
     <div className={darkMode ? "dark-theme" : "light-theme"}>
-      <Navbar />
+      <Navbar toggleSidebar={toggleSidebar}/>
+      <Sidebar isOpen={isSidebarOpen} />
+
       <div className="home">
-        <Sidebar />
-        <div className="very-main">
+        <div className={isSidebarOpen?"very-main mar":"very-main"}>
           <div className="main">
             {/* todo */}
             <div className="todo">

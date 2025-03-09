@@ -11,12 +11,21 @@ import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge";
 import TaskChart from "./TaskChart";
 import { useSelector } from "react-redux";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
   const darkMode = useSelector((state) => state.theme.darkMode);
 
   return (
     <>
-    <div className="sideBar-div" >
+    <div className="sideBar-div" style={{
+       position: "fixed", 
+       zIndex:'2',
+       top: 50,
+       left: isOpen ? "0" : "-350px",
+       width: "250px",
+       height: "100vh",
+       backgroundColor: darkMode ? "#333" : "#fff",
+       transition: "left 0.3s ease-in-out",
+    }} >
       <div className="profile-section">
         <img src={profile} alt="" />
         <p>Hello User</p>

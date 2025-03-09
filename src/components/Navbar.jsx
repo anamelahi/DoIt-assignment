@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../store/slices/themeSlice';
 import { IoIosMenu } from "react-icons/io";
@@ -9,13 +9,13 @@ import { CiLight } from "react-icons/ci";
 import "../App.css"
 import logo from "/logo.png"
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }) => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
   return (
     <nav>
         <div className="left">
-            <IoIosMenu className='icon-large'/>
+            <IoIosMenu  onClick={toggleSidebar} className='menuIcon icon-large'/>
             <img src={logo} alt="" />
         </div>
         <div className="right">

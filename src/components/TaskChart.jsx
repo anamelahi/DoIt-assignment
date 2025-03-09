@@ -1,5 +1,6 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import { useSelector } from "react-redux";
+import "../App.css"
 
 const COLORS = ["#4CAF50", "#1B5E20"]; 
 
@@ -19,7 +20,7 @@ const totalTasks = activeTasks.length + completedTasks.length;
       <h3>Today Tasks</h3>
       <h2>{totalTasks}</h2>
 
-      <PieChart width={200} height={200}>
+      <PieChart className="pie" width={200} height={200}>
         <Pie
           data={data}
           cx="50%"

@@ -6,7 +6,6 @@ const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 // ?lat={lat}&lon={lon}&appid={API key}
 export const getWeatherInfo = async (city) => {
     try {
-        // Step 1: Get latitude and longitude for the city
         const geoResponse = await axios.get(`http://api.openweathermap.org/geo/1.0/direct`, {
             params: {
                 q: 'Delhi',
@@ -22,17 +21,16 @@ export const getWeatherInfo = async (city) => {
 
         const { lat, lon } = geoResponse.data[0]; // Extract latitude and longitude
 
-        // Step 2: Get weather data using lat/lon
         const weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
             params: {
                 lat,
                 lon,
                 appid: API_KEY,
-                units: "metric" // Adjust for temperature units (metric/imperial)
+                units: "metric" 
             }
         });
 
-        console.log(weatherResponse.data); // Log or return the data
+        console.log(weatherResponse.data); 
         return weatherResponse.data;
     } catch (error) {
         console.error("Error fetching weather data:", error);

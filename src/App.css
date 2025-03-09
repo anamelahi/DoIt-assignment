@@ -271,3 +271,26 @@ button{
 .pie{
   border: none;
 }
+
+
+/* RESPONSIVE */
+@media (max-width:590px) {
+  .mar{
+    display: none;
+  }
+
+  .task-details-div{
+    width: 620vw;
+  }
+
+}
+@media (max-width:890px) {
+  /* .mar{
+    display: none;
+  } */
+
+  .task-details-div{
+    width: 620vw;
+  }
+
+}

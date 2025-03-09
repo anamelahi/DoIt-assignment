@@ -19,18 +19,14 @@ const TaskDetails = ({ task }) => {
     dispatch(toggleCompletion(taskId));
   };
 
-  // ✅ Handle Task Deletion
   const handleDelete = () => {
     dispatch(deleteTask(task.id));
     dispatch(closeTaskDetails()); // Close the details panel after deleting
   };
 
   return (
-    <div className="task-details-div">
-      {/* ✅ Close button */}
-     
+    <div className="task-details-div res">     
 
-      {/* ✅ Task Title with Checkbox */}
       <div className="check">
         <div className="list-left">
           <div
@@ -47,7 +43,6 @@ const TaskDetails = ({ task }) => {
         <CiStar className="icon-large" />
       </div>
 
-      {/* ✅ Task Options */}
       <div className="list-left">
         <div className="box">
           <FiPlus className="icon-large" />
@@ -62,7 +57,6 @@ const TaskDetails = ({ task }) => {
         <p>Set Reminder</p>
       </div>
 
-      {/* ✅ Toggle Due Date Picker */}
       <div className="list-left" onClick={() => setShowDatePicker(!showDatePicker)}>
         <div className="box">
           <CiCalendar className="icon-large" />

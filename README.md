@@ -34,8 +34,6 @@ This app allows users to manage their tasks efficiently, with the added function
 
 ---
 
-## 🔧 Installation & Setup  
-
 
 ## Screenshots:
 ![image](https://github.com/user-attachments/assets/a9080aca-99c1-4cfc-9b6d-f80429a54442)
